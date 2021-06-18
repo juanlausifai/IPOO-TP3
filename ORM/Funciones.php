@@ -153,12 +153,7 @@ class Funciones{
         return "id ".$this->getIdfunciones()." Nombre: ".$this->getNombre().", Hr.Inicio: ".$this->getHorario_inicio().", Duracion obra: ".$this->getDuracion_obra().", Precio: ".$this->getPrecio();
     }
 
-    
-
-
-    
-
-    
+     
 
     public function darCosto(){
         return $this->getPrecio();

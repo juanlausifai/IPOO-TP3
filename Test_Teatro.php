@@ -1,5 +1,5 @@
 <?php
-
+/*TEST DEL ANTERIOR PRACTICO(NO FUNCIONA EN EL ACTUAL, USAR Test_TeatroDos)
 include 'Teatro.php';
 include 'Funciones.php';
 include 'ObraTeatro.php';
@@ -154,4 +154,4 @@ do{
             echo "El costo total es: ". $t->sumarCosto()."\n";
             break;    
     }
-}while($opcion != 8);
+}while($opcion != 8);*/

@@ -8,13 +8,13 @@ include_once 'ORM/Musical.php';
 include_once 'ORM/ObraTeatro.php';
 
 include_once 'transacciones/abmTeatro.php';
-include_once 'transacciones/abmFunciones.php';
+//include_once 'transacciones/abmFunciones.php';
 include_once 'transacciones/abmCine.php';
 include_once 'transacciones/abmMusical.php';
 include_once 'transacciones/abmObraTeatro.php';
 
 $t = new abmTeatro();
-$f=new abmFunciones();
+//$f=new abmFunciones();
 $m=new abmMusical;
 $o=new abmObraTeatro;
 $c=new abmCine();
@@ -141,13 +141,6 @@ do{
             } while ($horario_ocupado);
 
             
-            
-
-            
-
-            
-
-
             if ($tipoFuncion == 1) {
                 $o->insertarObraTeatro($idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion);
                 

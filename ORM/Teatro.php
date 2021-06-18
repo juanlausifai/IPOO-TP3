@@ -308,6 +308,8 @@ Class Teatro{
         $duracionObraArray = explode(":", $duracionObra);
         $hr_duracion_obra = $duracionObraArray[0];
         $min_duracion_obra = $duracionObraArray[1];
+
+        
         
         //Transformo todo a minutos
         $total_min_inicio = $hr_inicio * 60 + $min_inicio;
@@ -323,11 +325,13 @@ Class Teatro{
             $htArray=explode(":",  $ht);
             $h=$htArray[0];
             $m=$htArray[1];
+            
 
-            $htDuracionObra=$value->getHorario_inicio();
+            $htDuracionObra=$value->getDuracion_obra();
             $htArrayDuracionObra=explode(":",  $htDuracionObra);
             $hDuracionObra=$htArrayDuracionObra[0];
             $mDuracionObra=$htArrayDuracionObra[1];
+
 
             $inicio = $h*60+$m;
             $fin =$inicio + $hDuracionObra*60+$mDuracionObra;
@@ -335,10 +339,13 @@ Class Teatro{
             //comparo mis horarios ya creados en el arreglo, 
             //con los horarios del objeto a guardar en el arreglo
             
-            if($inicio <= $total_min_inicio && $total_min_inicio <= $fin){
+            if($total_min_inicio <= $inicio && $total_min_fin >= $fin){
                 $horario_ocupado = true;
             }
-            if($inicio <= $total_min_fin && $total_min_fin <= $fin){
+            if($total_min_inicio >= $inicio && $total_min_inicio <= $fin){
+                $horario_ocupado = true;
+            }
+            if($total_min_fin >= $inicio && $total_min_fin <= $fin){
                 $horario_ocupado = true;
             }
             
