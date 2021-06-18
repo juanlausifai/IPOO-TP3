@@ -151,7 +151,7 @@ do{
             echo $t;
             break;
         case 7: //Mostrar el costo total
-            echo "El costo total es: ". $t->darCosto()."\n";
+            echo "El costo total es: ". $t->sumarCosto()."\n";
             break;    
     }
 }while($opcion != 8);
