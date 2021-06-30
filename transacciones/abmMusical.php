@@ -4,6 +4,9 @@ class abmMusical{
 
     function insertarMusical($idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$director,$cantidadPersonas){
         
+        
+       
+
         $arregloAsociativo=array(
             "idfunciones"=>null,
             "idteatro"=>$idteatro,

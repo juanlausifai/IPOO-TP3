@@ -23,7 +23,7 @@ class Funciones{
     public function __construct()
     {
         $this->idfunciones=0;
-        $this->objTeatro="";
+        $this->objTeatro=null;
         $this->nombre="";
         $this->horario_inicio="";
         $this->duracion_obra="";
@@ -182,12 +182,17 @@ class Funciones{
 		if($base->Iniciar()){
 			if($base->Ejecutar($consultaFunciones)){
 				if($row2=$base->Registro()){
-				    $this->setIdfunciones($id);
+                    //nuevo
+                    $objTeatro = new Teatro();
+                    $objTeatro->Buscar($row2['idteatro']);
+                    //----------------------------------
+                    $this->setIdfunciones($id);
 					$this->setNombre($row2['nombre']);
                     $this->setHorario_inicio($row2['horario_inicio']);
                     $this->setDuracion_obra($row2['duracion_obra']);
                     $this->setPrecio($row2['precio']);
-                    $this->setObjTeatro($row2['idteatro']);
+                    //$this->setObjTeatro($row2['idteatro']);
+                    $this->setObjTeatro($objTeatro);
 					$resp= true;
 				}				
 			
@@ -217,25 +222,10 @@ class Funciones{
 			if($base->Ejecutar($consultaFunciones)){				
 				$arregloFunciones= array();
 				while($row2=$base->Registro()){
-				    $idfunciones=$row2['idfunciones'];
-					$nombre=$row2['nombre'];
-					$horaInicio=$row2['horario_inicio'];
-                    $duracionObra=$row2['duracion_obra'];
-                    $precio=$row2['precio'];
-                    $idTeatro=$row2['idteatro'];
+                    $objFunciones=new Funciones();
+					$objFunciones->buscar($row2['idfunciones']);
+					array_push($arregloFunciones,$objFunciones);
 
-                    $arregloAsociativoFuncion= array(
-                        'idfunciones'=>$idfunciones,
-                        'idteatro'=>$idTeatro,
-                        'nombre'=>$nombre,
-                        'hora_inicio'=>$horaInicio,
-                        'duracion_obra'=>$duracionObra,
-                        'precio'=>$precio,
-                    );
-
-                    $funciones=new Funciones();
-					$funciones->cargar($arregloAsociativoFuncion);
-					array_push($arregloFunciones,$funciones);
 				}
 			
 		 	}	else {
@@ -255,8 +245,9 @@ class Funciones{
     public function insertar(){
 		$base=new BaseDatos();
 		$resp= false;
+        
 		$consultaInsertar="INSERT INTO funciones(idteatro, nombre, horario_inicio,  duracion_obra, precio) 
-				VALUES ('".$this->getObjTeatro()."','".$this->getNombre()."','".$this->getHorario_inicio()."','".$this->getDuracion_obra()."','".$this->getPrecio()."')";
+				VALUES ('".$this->getObjTeatro()->getIdteatro()."','".$this->getNombre()."','".$this->getHorario_inicio()."','".$this->getDuracion_obra()."','".$this->getPrecio()."')";
 		
 		if($base->Iniciar()){
 
@@ -281,7 +272,7 @@ class Funciones{
     public function modificar(){
 	    $resp =false; 
 	    $base=new BaseDatos();
-		$consultaModifica="UPDATE funciones SET idteatro='".$this->getObjTeatro()."',precio='".$this->getPrecio()."',nombre='".$this->getNombre()."'
+		$consultaModifica="UPDATE funciones SET idteatro='".$this->getObjTeatro()->getIdteatro()."',precio='".$this->getPrecio()."',nombre='".$this->getNombre()."'
                            ,horario_inicio='".$this->getHorario_inicio()."',duracion_obra='". $this->getDuracion_obra()."' WHERE idfunciones =".$this->getIdfunciones();
 		//echo $consultaModifica;
         if($base->Iniciar()){

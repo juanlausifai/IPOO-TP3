@@ -85,6 +85,7 @@ do{
             
             echo "Ingrese el id del teatro para el que desea agregar una funcion\n";
             $idteatro = trim(fgets(STDIN));
+            
            
             echo "Ingrese el tipo funcion \n Obra de teatro:1\n Musical:2\n Cine:3\n";
             $tipoFuncion = trim(fgets(STDIN));
@@ -142,20 +143,20 @@ do{
 
             
             if ($tipoFuncion == 1) {
-                $o->insertarObraTeatro($idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion);
+                $o->insertarObraTeatro($objTeatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion);
                 
             }if ($tipoFuncion == 2) {
                 echo "Ingrese el nombre del director \n";
                 $nuevoDirector = trim(fgets(STDIN));
                 echo "Ingrese la cantidad de personas \n";
                 $nuevaCantidadPersonas = trim(fgets(STDIN));
-                $m->insertarMusical($idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoDirector,$nuevaCantidadPersonas);
+                $m->insertarMusical($objTeatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoDirector,$nuevaCantidadPersonas);
             }if ($tipoFuncion == 3) {
                 echo "Ingrese el genero \n";
                 $nuevoGenero = trim(fgets(STDIN));
                 echo "Ingrese el pais de origen \n";
                 $nuevoPaisOrigen = trim(fgets(STDIN));
-                $c->insertarCine($idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoGenero,$nuevoPaisOrigen);
+                $c->insertarCine($objTeatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoGenero,$nuevoPaisOrigen);
             }
 
             break;
@@ -207,17 +208,17 @@ do{
                     $nuevoGenero = trim(fgets(STDIN));
                     echo "Ingrese el pais de origen \n";
                     $nuevoPaisOrigen = trim(fgets(STDIN));
-                    $c->modificarCine($idEncontrado,$idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoGenero,$nuevoPaisOrigen);
+                    $c->modificarCine($idEncontrado,$objTeatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoGenero,$nuevoPaisOrigen);
                 }
                 if ($clase=="Musical") {
                     echo "Ingrese el nombre del director \n";
                     $nuevoDirector = trim(fgets(STDIN));
                     echo "Ingrese la cantidad de personas \n";
                     $nuevaCantidadPersonas = trim(fgets(STDIN));
-                    $m->modificarMusical($idEncontrado,$idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoDirector,$nuevaCantidadPersonas); 
+                    $m->modificarMusical($idEncontrado,$objTeatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion,$nuevoDirector,$nuevaCantidadPersonas); 
                 }
                 if ($clase=="ObraTeatro") {
-                    $o->modificarObraTeatro($idEncontrado,$idteatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion);   
+                    $o->modificarObraTeatro($idEncontrado,$objTeatro,$nuevoNombreFuncion,$hrInicio,$hrDuracion,$nuevoPrecioFuncion);   
                 }
                 
             }

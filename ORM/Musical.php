@@ -92,11 +92,11 @@ class Musical extends Funciones{
     public static function listar($condicion=""){
 	    $arreglo = null;
 		$base=new BaseDatos();
-		$consulta="Select * from musicales inner join funciones on musicales.idfunciones=funciones.idfunciones";
+		$consulta="Select * from musicales";
 		if ($condicion!=""){
 		    $consulta=$consulta.' where '.$condicion;
 		}
-		//$consulta.=" order by idfunciones ";
+		$consulta.=" order by idfunciones ";
 		//echo $consulta;
 		if($base->Iniciar()){
 		    if($base->Ejecutar($consulta)){				
