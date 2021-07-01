@@ -71,13 +71,14 @@ Class Teatro{
     {
         //return $this->funciones;
         
-        if (count($this->funciones) == 0) {
+        //if (count($this->funciones) == 0) {
             
             $objCine = new Cine();
             $objMusical = new Musical();
             $objObraTeatro = new ObraTeatro();
             
-            $condicion="";
+            $condicion = " idteatro=" . $this->getIdTeatro();
+            //$condicion="";
 
             $colCine = $objCine->listar($condicion);
             $colMusical = $objMusical->listar($condicion);
@@ -85,7 +86,7 @@ Class Teatro{
             $funciones = array_merge($colCine, $colMusical, $colObrasTeatro);
             $this->setFunciones($funciones);
 
-        }
+        //}
         
         return $this->funciones;
     }

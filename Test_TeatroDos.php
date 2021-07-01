@@ -266,13 +266,16 @@ do{
             $t->listarTeatros();
             echo "Ingrese el id del teatro que desea ver\n";
             $idteatro = trim(fgets(STDIN));
+            
             $objTeatro= $t->seleccionTeatro($idteatro);
             echo $objTeatro."\n\n";
+            
             break; 
         case 8: //Mostrar el costo por teatro
             $t->listarTeatros();
             echo "Ingrese el id del teatro que desea ver\n";
             $idteatro = trim(fgets(STDIN));
+            
             $objTeatro= $t->seleccionTeatro($idteatro);
             echo "El costo total es: ". $objTeatro->sumarCosto()."\n\n";
             break;       

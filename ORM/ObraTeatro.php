@@ -78,11 +78,12 @@ class ObraTeatro extends Funciones{
     public static function listar($condicion=""){
 	    $arreglo = null;
 		$base=new BaseDatos();
-		$consulta="Select * from obra_teatro";
+		$consulta="Select * from obra_teatro inner join funciones on obra_teatro.idfunciones=funciones.idfunciones";
+		//$consulta="Select * from obra_teatro";
 		if ($condicion!=""){
 		    $consulta=$consulta.' where '.$condicion;
 		}
-		$consulta.=" order by idfunciones ";
+		$consulta.=" order by funciones.idfunciones ";
 		//echo $consulta;
 		if($base->Iniciar()){
 		    if($base->Ejecutar($consulta)){				

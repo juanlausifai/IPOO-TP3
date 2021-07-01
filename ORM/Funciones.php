@@ -182,16 +182,15 @@ class Funciones{
 		if($base->Iniciar()){
 			if($base->Ejecutar($consultaFunciones)){
 				if($row2=$base->Registro()){
-                    //nuevo
+                    
                     $objTeatro = new Teatro();
                     $objTeatro->Buscar($row2['idteatro']);
-                    //----------------------------------
+                    
                     $this->setIdfunciones($id);
 					$this->setNombre($row2['nombre']);
                     $this->setHorario_inicio($row2['horario_inicio']);
                     $this->setDuracion_obra($row2['duracion_obra']);
                     $this->setPrecio($row2['precio']);
-                    //$this->setObjTeatro($row2['idteatro']);
                     $this->setObjTeatro($objTeatro);
 					$resp= true;
 				}				

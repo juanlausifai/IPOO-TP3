@@ -62,7 +62,7 @@ class Cine extends Funciones{
 
 
     /**
-	 * Recupera los datos de un musical por idfunciones
+	 * Recupera los datos de un cine por idfunciones
 	 * @param int $idfunciones
 	 * @return true en caso de encontrar los datos, false en caso contrario 
 	 */		
@@ -94,11 +94,12 @@ class Cine extends Funciones{
     public static function listar($condicion=""){
 	    $arreglo = null;
 		$base=new BaseDatos();
-		$consulta="Select * from cine";
+		$consulta="Select * from cine inner join funciones on cine.idfunciones=funciones.idfunciones";
+		//$consulta="Select * from cine";
 		if ($condicion!=""){
 		    $consulta=$consulta.' where '.$condicion;
 		}
-		$consulta.=" order by idfunciones ";
+		$consulta.=" order by funciones.idfunciones ";
 		//echo $consulta;
 		if($base->Iniciar()){
 		    if($base->Ejecutar($consulta)){				
